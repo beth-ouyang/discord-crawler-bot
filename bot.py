@@ -1,6 +1,7 @@
 from discord.ext import commands 
 import discord
-from crawler import main as ad_crawler
+from crawler import admission_main as ad_crawler
+from crawler import line_emoji_download as line_emoji_download
 
 intents = discord.Intents.default()
 intents.message_content = True
