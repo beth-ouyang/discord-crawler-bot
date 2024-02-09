@@ -7,32 +7,38 @@ intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
 
-#調用event函式庫
 @client.event
-#當機器人完成啟動時
+# After the bot is activated, print the login info
 async def on_ready():
-    print('目前登入身份：', client.user)
+    print('Login as：', client.user)
 
 @client.event
-#當有訊息時
+# Actions when recieve messages
 async def on_message(message):
-    #排除自己的訊息，避免陷入無限循環
+    # Ignore the message from itself
     if message.author == client.user:
         return
-
+        
+    # Simple echo function
     if message.content.startswith('說'):
       tmp = message.content.split("說",2)
       if len(tmp) > 1:
         await message.channel.send(tmp[-1])
         print(tmp[-1])
+          
+    # Web scrapping for the newest application info
     elif message.content=='申':
        admission_report = ad_crawler()
        await message.channel.send(admission_report)
        print(admission_report)
+
+    # Download Line stickers through link
     elif message.content.startswith('!line下載>>'):
       tmp = message.content.replace(" ", "").split(">>",2)
       line_emoji_download(tmp[-1])
       await message.channel.send('下載好了!', file=discord.File("line_emoji.zip"))
+
+    # Print the available functions & usage
     elif message.content=='!指令':
       await message.channel.send("""目前有的指令:
       1. 說 + 想講的話 : 說安安 -> return 安安
