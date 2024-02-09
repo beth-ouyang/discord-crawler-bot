@@ -1,5 +1,6 @@
 from discord.ext import commands 
 import discord
+import os
 from crawler import admission_main as ad_crawler
 from crawler import line_emoji_download as line_emoji_download
 
