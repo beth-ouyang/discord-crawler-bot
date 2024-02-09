@@ -19,4 +19,11 @@ People post the updates of their application for master's program in the forum. 
 `申` -> return the latest posts regarding to the programs that I applied for.
 
 ### Execution on the local machine
-1. Simply run the `bot.py` file.
+1. Set the environment variables: `token`, which can be found in the [Discord Developers Portal](https://discord.com/developers/applications)
+2. Simply run the `bot.py` file.
+
+### Deploy on [Render](https://dashboard.render.com/)
+1. Add a web service by importing the Github repository
+2. Set the build command `pip install -r requirements.txt`
+3. Set the start command `python bot.py`
+4. Set the environment variables: `token`, which can be found in the [Discord Developers Portal](https://discord.com/developers/applications)
